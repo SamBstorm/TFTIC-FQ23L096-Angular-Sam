@@ -1,0 +1,45 @@
+<div>
+    <div class="alert alert-danger" *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="login-email">Login : </label>
+            <input formControlName="loginEmail" id="login-email" name="email" type="email">
+            <ng-container *ngIf="!this.loginForm.get('loginEmail')?.valid && this.loginForm.get('loginEmail')?.touched">
+                <p *ngIf="getError('loginEmail','required')">L'adresse e-mail est obligatoire.</p>
+                @if(getError('loginEmail','email')){
+                    <p>L'adresse e-mail n'est au format attendu.</p>
+                }
+            </ng-container>
+        </div>
+        <div>
+            <label for="login-password">Mot de passe : </label>
+            <input formControlName="loginPassword" id="login-password" name="password" type="password">
+            <ng-container *ngIf="!this.loginForm.get('loginPassword')?.valid && this.loginForm.get('loginPassword')?.touched">
+                <p *ngIf="getError('loginPassword','required')">Le mot de passe est obligatoire.</p>
+                @if(getError('loginPassword','minlength')){
+                    <p>Le mot de passe doit avoir au minimum {{getError('loginPassword','minlength').requiredLength}} caractères.</p>
+                }
+                @if(getError('loginPassword','maxlength')){
+                    <p>Le mot de passe doit avoir au maximum {{getError('loginPassword','maxlength').requiredLength}} caractères.</p>
+                }
+                @if(getError('loginPassword','haveNumber')){
+                    <p>{{getError('loginPassword','haveNumber')?.message}}</p>
+                }
+                @if(getError('loginPassword','haveLowerCase')){
+                    <p>{{getError('loginPassword','haveLowerCase')?.message}}</p>
+                }
+                @if(getError('loginPassword','haveUpperCase')){
+                    <p>{{getError('loginPassword','haveUpperCase')?.message}}</p>
+                }
+                @if(getError('loginPassword','haveSpecialCharacter')){
+                    <p>{{getError('loginPassword','haveSpecialCharacter')?.message}}</p>
+                }
+            </ng-container>
+        </div>
+        <div>
+            <button type="submit">Se connecter</button>
+        </div>
+    </form>
+</div>
