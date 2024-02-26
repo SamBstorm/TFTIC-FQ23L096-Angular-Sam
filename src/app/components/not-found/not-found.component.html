@@ -1,0 +1,11 @@
+<h1>Perdu sur internet?</h1>
+<h2>Pas de soucis! On va va vous aidez!</h2>
+
+<p>* <-------- Vous êtes ici!</p>
+
+@if(seconds > 0) {
+    <p>Vous allez être redirigé dans {{seconds}} seconde{{(seconds > 1)? 's':''}}</p>
+}
+@else{
+    <a routerLink="/">Revenir à la source!</a>
+}
