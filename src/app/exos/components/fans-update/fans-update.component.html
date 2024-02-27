@@ -1,0 +1,20 @@
+<h1>{{fan.name}}</h1>
+<h2>né le {{fan.birthDate | date}}</h2>
+
+<h3>Liste des séries : </h3>
+<form [formGroup]="seriesForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+        <legend>Series : </legend>
+        <button type="button" (click)="addSerie()">+</button>
+        <div formArrayName="series" *ngFor="let c of seriesArrayForm.controls; let i = index">
+            <label [for]="'fan-serie-'+i">Titre {{i+1}} : </label>
+            <input [id]="'fan-serie-'+i" [formControlName]="i" type="text" required>
+            <p>Messages d'erreurs</p>
+            <button type="button" (click)="removeSerie(i)">-</button>
+        </div>
+    </fieldset>
+    <div>
+        <button type="submit">Ajouter</button>
+    </div>
+</form>
+<a routerLink="/exos/fans-list">Revenir à la liste</a>

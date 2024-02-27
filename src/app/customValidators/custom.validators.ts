@@ -81,4 +81,26 @@ export class CustomValidators{
             };
         }
     }
+
+    public static checkYearsOld(minimumAge : number) : null | ValidatorFn{
+        return (control : AbstractControl) : null | ValidationErrors => {
+            const value : string | null = control.value;
+            if(value === null || value.length <= 0) return null;
+            let today : Date = new Date();
+            let birthDate = new Date(value);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            let months = today.getMonth() - birthDate.getMonth();
+            if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            if(age < minimumAge) return {
+                checkYearsOld : {
+                    message : `Trop jeune`,
+                    currentAge : age,
+                    requiredAge : minimumAge
+                }
+            }
+            return null;
+        }
+    }
 }
