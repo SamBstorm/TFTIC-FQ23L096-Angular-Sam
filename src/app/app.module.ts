@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthentificationService } from './demos/services/authentification.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule
   ],
   providers: [
+    AuthentificationService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

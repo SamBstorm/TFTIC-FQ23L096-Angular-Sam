@@ -1,0 +1,15 @@
+<h1>Se connecter</h1>
+<!-- form>(div*2>label+input)+div>button:submit{Se connecter} -->
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="login-email">Email : </label>
+        <input formControlName="email" type="email" id="login-email">
+    </div>
+    <div>
+        <label for="login-password">Mot de passe : </label>
+        <input formControlName="password" type="password" id="login-password">
+    </div>
+    <div>
+        <button type="submit">Se connecter</button>
+    </div>
+</form>
