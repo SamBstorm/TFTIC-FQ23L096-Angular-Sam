@@ -1,0 +1,25 @@
+<h1>Liste de fans</h1>
+@if(fans.length <= 0 ){
+    <p>Pas encore de fans?</p>
+    <a routerLink="/exos/fans-create">Ajouter en un!</a>
+}
+@else {
+    <a routerLink="/exos/fans-create">Ajouter un fan</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let fan of fans">
+                <td>{{fan.name}}</td>
+                <td>
+                    <a [routerLink]="'/exos/fans-edit/'+fan.id">Edit</a> | 
+                    <a [routerLink]="'/exos/fans-details/'+fan.id">Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}

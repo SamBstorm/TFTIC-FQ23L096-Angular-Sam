@@ -1,0 +1,15 @@
+<h1>{{fan.name}}</h1>
+<h2>né le {{fan.birthDate | date}}</h2>
+
+<h3>Liste des séries : </h3>
+@if(fan.series.length <= 0){
+    <p>Pas encore de séries?</p>
+    <a [routerLink]="'/exos/fans-edit/'+id">Ajouter des séries?</a>
+}
+@else {
+    <ul>
+        <li *ngFor="let serie of fan.series">{{serie}}</li>
+    </ul>
+}
+<a [routerLink]="'/exos/fans-edit/'+id">Mettre à jour</a> | 
+<a routerLink="/exos/fans-list">Revenir à la liste</a>
