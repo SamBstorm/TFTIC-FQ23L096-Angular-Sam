@@ -16,6 +16,8 @@ export class DemoRoutingParamsComponent implements OnInit{
 
   ngOnInit(): void {
     this.currentRoute = this.getUrl(this._activevatedRoute.snapshot);
+    this.currentParam = this._activevatedRoute.snapshot.params['id'];
+    this.currentQueryParam = this._activevatedRoute.snapshot.queryParams['message'];
   }
 
   private getUrl(snapshot : ActivatedRouteSnapshot) : string{

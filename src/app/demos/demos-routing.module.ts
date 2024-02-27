@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DemoRoutingParamsComponent } from './components/demo-routing-params/demo-routing-params.component';
 
 const routes: Routes = [
-  {path:'routing-params', component:DemoRoutingParamsComponent}
+  {path:'routing-params/:id', component:DemoRoutingParamsComponent}
 ];
 
 @NgModule({
