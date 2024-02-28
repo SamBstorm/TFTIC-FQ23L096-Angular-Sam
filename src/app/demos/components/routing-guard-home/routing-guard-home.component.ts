@@ -7,13 +7,13 @@ import { AuthentificationService } from '../../services/authentification.service
   styleUrl: './routing-guard-home.component.scss'
 })
 export class RoutingGuardHomeComponent implements OnInit {
-  userEmail : string | null = null;
+  userEmail : string | undefined = undefined;
 
   constructor(private _authService : AuthentificationService){}
   
   ngOnInit(): void {
     //C'est ici que nous vérifirons grâce au service si quelqu'un est connecté
     //et récupérer son email
-    if(this._authService.isConnected) this.userEmail = this._authService.currentUserEmail;
+    if(this._authService.isConnected) this.userEmail = this._authService.currentUser?.email;
   }
 }

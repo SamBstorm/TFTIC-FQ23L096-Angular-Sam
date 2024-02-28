@@ -1,31 +1,40 @@
+import { IUser } from './../models/iuser';
 import { Injectable } from '@angular/core';
+import { SessionStorageService } from './session-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthentificationService {
 
-  private _users : any[] = [
+  private _sessionKey : string = "auth";
+
+  private _users : IUser[] = [
     {email: 'samuel.legrain@bstorm.be', password : 'Test1234='},
     {email: 'admin@admin', password : 'administrator'}
   ];
 
-  currentUserEmail : string | null = null;
+  currentUser : IUser | null;
 
+  
   public get isConnected() : boolean {
-    return this.currentUserEmail != null;
+    return this.currentUser != null;
+  }
+  
+  constructor(private _session : SessionStorageService){
+    this.currentUser = this._session.getItem(this._sessionKey)
   }
 
-  constructor() { }
-
-  public login(email : string, password : string) : boolean{
-    if(this._users.find(user => user.email == email && user.password ==password)){
-      this.currentUserEmail = email;
+  public login(login : IUser) : boolean{
+    if(this._users.find( user => user.email == login.email && user.password == login.password)){
+          this.currentUser =  { email : login.email, password : '********'};
+          this._session.setItem(this._sessionKey,this.currentUser);
     }
     return this.isConnected;
   }
 
   public logout(): void{
-    this.currentUserEmail = null;
+    this.currentUser = null;
+    this._session.removeItem(this._sessionKey);
   }
 }

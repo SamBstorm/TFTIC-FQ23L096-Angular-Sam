@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../../services/authentification.service';
+import { IUser } from '../../models/iuser';
 
 @Component({
   selector: 'app-routing-guard-login',
@@ -27,8 +28,11 @@ export class RoutingGuardLoginComponent implements OnInit {
 
   public onSubmit() : void{
     if(!this.loginForm.valid) return;
-    //si correctement identifier grace au service =>
-    if(this._authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value ))
+    let newUser : IUser = {
+      email : this.loginForm.get('email')?.value,
+      password : this.loginForm.get('password')?.value
+    }
+    if(this._authService.login(newUser))
       this._router.navigate(['demos','routing-guard-home']);
   }
 
