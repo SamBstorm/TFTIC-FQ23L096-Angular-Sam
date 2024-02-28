@@ -5,12 +5,17 @@ import { RoutingGuardHomeComponent } from './components/routing-guard-home/routi
 import { RoutingGuardLoginComponent } from './components/routing-guard-login/routing-guard-login.component';
 import { RoutingGuardLogoutComponent } from './components/routing-guard-logout/routing-guard-logout.component';
 import { mustBeAnonymous, mustBeLogged } from './guards/can-activate.guard';
+import { RoutingGuardMainComponent } from './components/routing-guard-main/routing-guard-main.component';
 
 const routes: Routes = [
   {path:'routing-params/:id', component:DemoRoutingParamsComponent},
-  {path:'routing-guard-home', component : RoutingGuardHomeComponent},
-  {path:'routing-guard-login', component : RoutingGuardLoginComponent, canActivate : [mustBeAnonymous]},
-  {path:'routing-guard-logout', component : RoutingGuardLogoutComponent, canActivate : [mustBeLogged]},
+  {path:'routing-guard', component : RoutingGuardMainComponent, children: [
+    {path:'', redirectTo: 'home', pathMatch : 'full'},
+    {path:'home', component : RoutingGuardHomeComponent},
+    {path:'login', component : RoutingGuardLoginComponent, canActivate : [mustBeAnonymous]},
+    {path:'logout', component : RoutingGuardLogoutComponent, canActivate : [mustBeLogged]}
+  ]},
+  
 ];
 
 @NgModule({

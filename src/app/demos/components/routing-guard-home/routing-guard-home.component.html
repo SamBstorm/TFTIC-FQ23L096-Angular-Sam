@@ -1,7 +1,1 @@
 <h1>Bienvenue{{(userEmail == undefined)?'':' '+userEmail}}</h1>
-@if(userEmail == undefined){
-    <a routerLink="/demos/routing-guard-login">Se connecter</a>
-}
-@else {
-    <a routerLink="/demos/routing-guard-logout">Se déconnecter</a>
-}

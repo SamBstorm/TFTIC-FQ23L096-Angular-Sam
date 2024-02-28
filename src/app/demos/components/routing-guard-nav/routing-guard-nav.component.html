@@ -1,0 +1,23 @@
+<nav>
+    <ul>
+        <li>
+            <div>
+                <a routerLink="/demos/routing-guard/home">Accueil</a>
+            </div>
+        </li>
+        @if(!isConnected){
+            <li>
+                <div>
+                    <a routerLink="/demos/routing-guard/login">Se connecter</a>
+                </div>
+            </li>
+        }
+        @else {
+            <li>
+                <div>
+                    <a routerLink="/demos/routing-guard/logout">Se déconnecter</a>
+                </div>
+            </li>
+        }
+    </ul>
+</nav>

@@ -15,10 +15,10 @@ export class RoutingGuardLogoutComponent {
 
   public validate(){
     this._authService.logout();
-    this._router.navigate(['demos','routing-guard-login']);
+    this._router.navigate(['demos','routing-guard','login']);
   }
   
   public cancel(){
-    this._router.navigate(['demos','routing-guard-home']);
+    this._router.navigate(['demos','routing-guard','home']);
   }
 }

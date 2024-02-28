@@ -33,7 +33,7 @@ export class RoutingGuardLoginComponent implements OnInit {
       password : this.loginForm.get('password')?.value
     }
     if(this._authService.login(newUser))
-      this._router.navigate(['demos','routing-guard-home']);
+      this._router.navigate(['demos','routing-guard','home']);
   }
 
 }
