@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IFans } from '../../models/ifans';
 import { FansService } from '../../services/fans.service';
+import test from 'node:test';
 
 @Component({
   selector: 'app-fans-list',
@@ -15,5 +16,7 @@ export class FansListComponent implements OnInit{
 
   ngOnInit(): void {
     this.fans = this._fansService.getAll();
+    // ! Test pour le Guard CanActivate
+    // this.fans.push({name : 'test', birthDate: new Date, id : 100, series : []})
   }
 }
