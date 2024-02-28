@@ -33,7 +33,7 @@ export class FansService {
   }
 
   public insert(fan : IFans) : number{
-    let idmax : number = Math.max(...this._fans.map(f => f.id)) + 1;
+    let idmax : number = (this._fans.length > 0 )?Math.max(...this._fans.map(f => f.id)) + 1 : 1;
     fan.id = idmax;
     this._fans.push(fan);
     return idmax;
