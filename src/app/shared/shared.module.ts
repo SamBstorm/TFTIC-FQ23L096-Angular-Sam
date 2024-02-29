@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports:[
     FormsModule,
     ReactiveFormsModule
+  ],
+  providers:[
   ]
 })
 export class SharedModule { }

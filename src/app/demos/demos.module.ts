@@ -9,6 +9,8 @@ import { RoutingGuardLogoutComponent } from './components/routing-guard-logout/r
 import { SharedModule } from '../shared/shared.module';
 import { RoutingGuardNavComponent } from './components/routing-guard-nav/routing-guard-nav.component';
 import { RoutingGuardMainComponent } from './components/routing-guard-main/routing-guard-main.component';
+import { RoutingGuardRegisterComponent } from './components/routing-guard-register/routing-guard-register.component';
+import { RoutingGuardProfilComponent } from './components/routing-guard-profil/routing-guard-profil.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { RoutingGuardMainComponent } from './components/routing-guard-main/routi
     RoutingGuardLoginComponent,
     RoutingGuardLogoutComponent,
     RoutingGuardNavComponent,
-    RoutingGuardMainComponent
+    RoutingGuardMainComponent,
+    RoutingGuardRegisterComponent,
+    RoutingGuardProfilComponent
   ],
   imports: [
     CommonModule,

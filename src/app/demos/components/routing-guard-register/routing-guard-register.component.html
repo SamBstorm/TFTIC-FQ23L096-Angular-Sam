@@ -1,0 +1,22 @@
+<h1>Veuillez vous enregistrer</h1>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="register-email">Votre adresse email : </label>
+        <input formControlName="email" type="email" id="register-email" required>
+    </div>
+    <div>
+        <label for="register-password">Votre mot de passe : </label>
+        <input formControlName="password" type="password" id="register-password" required>
+    </div>
+    <div>
+        <label for="register-confirm-password">Veuillez confirmer votre mot de passe : </label>
+        <input formControlName="confirm" type="password" id="register-confirm-password" required>
+    </div>
+    <div>
+        <input formControlName="consent" type="checkbox" id="register-consent" required>
+        <label for="register-consent">En vous inscrivant, vous déclarez avoir pris connaissance des conditions d'utilisation de notre site et de ses services.</label>
+    </div>
+    <div>
+        <button type="submit">S'enregistrer</button>
+    </div>
+</form>

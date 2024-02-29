@@ -29,11 +29,12 @@ export class RoutingGuardLoginComponent implements OnInit {
   public onSubmit() : void{
     if(!this.loginForm.valid) return;
     let newUser : IUser = {
+      id : undefined,
       email : this.loginForm.get('email')?.value,
       password : this.loginForm.get('password')?.value
     }
-    if(this._authService.login(newUser))
-      this._router.navigate(['demos','routing-guard','home']);
+    this._authService.login(newUser)
+      .add(()=> this._router.navigate(['demos','routing-guard','home']));
   }
 
 }
