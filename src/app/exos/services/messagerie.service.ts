@@ -1,28 +1,25 @@
 import { Injectable } from '@angular/core';
 import { IMessage } from '../models/imessage';
 import { Subject } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessagerieService {
 
-  private _messages : IMessage[] = [
-    {
-      sender : 'prof', 
-      message : 'Bonjour à tous, nous allons débuter le cours', 
-      date : new Date(2024,1,29,9,0,0)
-    },
-    {
-      sender : 'Élèves',
-      message : 'Bonjour, le temps de démarrer la VM et nous sommes là!',
-      date : new Date(2024,1,29,9,1,0)
-    }
-  ];
+  private _messages : IMessage[];
+
+  private _localKey : string = "messagerie";
 
   public obsLastestMessage : Subject<IMessage> = new Subject<IMessage>();
 
-  constructor() { }
+  constructor(
+    private _local : LocalStorageService
+  ) { 
+    this._messages = _local.getItem<IMessage[]>(this._localKey) ?? [];
+    this._messages.forEach(msg => msg.date = new Date(msg.date));
+  }
 
   public getAll() : IMessage[]{
     return [...this._messages];
@@ -30,6 +27,7 @@ export class MessagerieService {
 
   public addMessage(msg : IMessage) : void{
     this._messages.push(msg)
+    this._local.setItem(this._localKey, this._messages);
     this.obsLastestMessage.next(msg);
   }
 }
