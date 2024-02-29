@@ -9,6 +9,8 @@ import { FansListComponent } from './components/fans-list/fans-list.component';
 import { FansDetailsComponent } from './components/fans-details/fans-details.component';
 import { FansCreateComponent } from './components/fans-create/fans-create.component';
 import { FansUpdateComponent } from './components/fans-update/fans-update.component';
+import { MessagerieMainComponent } from './components/messagerie-main/messagerie-main.component';
+import { MessagerieFormComponent } from './components/messagerie-form/messagerie-form.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { FansUpdateComponent } from './components/fans-update/fans-update.compon
     FansListComponent,
     FansDetailsComponent,
     FansCreateComponent,
-    FansUpdateComponent
+    FansUpdateComponent,
+    MessagerieMainComponent,
+    MessagerieFormComponent
   ],
   imports: [
     CommonModule,

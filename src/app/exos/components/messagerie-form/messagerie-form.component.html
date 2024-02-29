@@ -1,0 +1,13 @@
+<form [formGroup]="msgForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="msg-sender">Auteur : </label>
+        <input formControlName="sender" id="msg-sender" type="text" required/> 
+    </div>
+    <div>
+        <label for="msg-message">Votre message : </label>
+        <textarea formControlName="message" id="msg-message" required></textarea> 
+    </div>
+    <div>
+        <button type="submit" [disabled]="!msgForm.valid">Envoyer</button>
+    </div>
+</form>

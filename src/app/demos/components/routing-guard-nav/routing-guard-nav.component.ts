@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthentificationService } from '../../services/authentification.service';
-import { Subscription } from 'rxjs';
+import { Subscription, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-routing-guard-nav',
@@ -15,7 +15,14 @@ export class RoutingGuardNavComponent implements OnInit, OnDestroy {
   constructor(private _authService : AuthentificationService){}
   
   public ngOnInit(): void {
-    this._subIsConnected = this._authService.obsIsConnected.subscribe({
+    this._subIsConnected = this._authService.obsIsConnected
+    // .pipe(
+    //   tap((data : boolean) => console.log(data)),
+    //   map((data : boolean) => {
+    //       if(data) return 1; else return 0;
+    //     }
+    //   )
+    .subscribe({
       next : (data : boolean) => this.isConnected = data,
       error : (error) => console.error(error),
       complete :() => console.log('récupéré')

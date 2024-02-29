@@ -1,0 +1,10 @@
+<div style="background-color: beige; border: 1px solid bisque; padding: 5%;">
+    @for (message of messages; track $index) {
+        <div style="background-color: lavender; border-radius: 15px; padding: 15px; width : 250px; margin: 15px 0;">
+            <p>{{message.sender}}</p>
+            <p>{{message.message}}</p>
+            <p>{{message.date}}</p>
+        </div>
+    }
+</div>
+<app-messagerie-form></app-messagerie-form>
